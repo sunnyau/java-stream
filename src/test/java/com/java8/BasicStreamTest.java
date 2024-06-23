@@ -8,7 +8,9 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,20 +22,9 @@ import org.junit.Test;
  */
 public class BasicStreamTest
 {
-    private List<String> list;
-    private Map<String, Integer> map;
-
-    @Before
-    public void setUp() throws Exception
-    {
-        list = Arrays.asList("A1", "A2", "B1", "B2", "C1", "C2");
-        map = new HashMap<>();
-        map.put("A", 11);
-        map.put("B", 12);
-        map.put("C", 13);
-        map.put("D", 14);
-        map.put("E", 15);
-    }
+    private List<String> list = List.of("A1", "A2", "B1", "B2", "C1", "C2");
+    private List<Integer> numList = List.of(2, 3, 4, 5, 6);
+    private Map<String, Integer> map = Map.of("A", 11, "B", 12, "C", 13, "D", 14, "E", 15);
 
     /**
      * Introduce stream(), collect(), toList(), toMap()
@@ -69,7 +60,7 @@ public class BasicStreamTest
 
     /**
      * map can transform structure. (e.g. List<String> to List<Integer>, Map to
-     * List etc )
+     * Set etc )
      */
     @Test
     public void mapShouldTransform()
@@ -80,18 +71,18 @@ public class BasicStreamTest
         List<Integer> expected1 = Arrays.asList(2, 2, 2, 2, 2, 2);
         assertEquals(expected1, countList);
 
-        // transform Map<String,Integer> to List<String> of key
-        List<String> mapKeyList =
-                map.entrySet().stream().map(Map.Entry::getKey).collect(Collectors.toList());
-        List<String> expected2 = Arrays.asList("A", "B", "C", "D", "E");
-        assertEquals(expected2, mapKeyList);
+        // transform Map<String,Integer> to Set<String> of key
+        Set<String> mapKeySet =
+                map.entrySet().stream().map(Map.Entry::getKey).collect(Collectors.toSet());
+        // List<String> expected2 = Arrays.asList("A", "B", "C", "D", "E");
+        Set<String> expected2 = Set.of("A", "B", "C", "D", "E");
+        assertEquals(expected2, mapKeySet);
 
-        // transform Map<String,Integer> to List<String> of ( key + value )
-        List<String> keyPlusValueList =
-                map.entrySet().stream().map(p -> p.getKey() + p.getValue()).collect(Collectors.toList());
-        List<String> expected3 =
-                Arrays.asList("A11", "B12", "C13", "D14", "E15");
-        assertEquals(expected3, keyPlusValueList);
+        // transform Map<String,Integer> to Set<String> of ( key + value )
+        Set<String> keyPlusValueSet =
+                map.entrySet().stream().map(p -> p.getKey() + p.getValue()).collect(Collectors.toSet());
+        Set<String> expected3 = Set.of("A11", "B12", "C13", "D14", "E15");
+        assertEquals(expected3, keyPlusValueSet);
     }
 
     /**
@@ -149,4 +140,20 @@ public class BasicStreamTest
         assertEquals("A1 A2 B1 B2 C1 C2", reduce1);
     }
 
+    @Test
+    public void reduceMinMaxSumOptional()
+    {
+        assertEquals( Optional.of(2), numList.stream().reduce(Integer::min) );                
+        assertEquals( Optional.of(6), numList.stream().reduce(Integer::max) );
+        assertEquals( Optional.of(20), numList.stream().reduce(Integer::sum) );
+    }
+
+    @Test
+    public void reduceMinMaxSum()
+    {
+        // interesting. it is 0, not 2
+        assertEquals( 0, (int)numList.stream().reduce(0, Integer::min) );
+        assertEquals( 6, (int)numList.stream().reduce(0, Integer::max) );
+        assertEquals( 20, (int)numList.stream().reduce(0, Integer::sum) );                
+    }    
 }

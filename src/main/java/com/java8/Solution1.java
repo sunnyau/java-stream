@@ -20,6 +20,10 @@ class Solution1 {
         System.out.println(returnList);
     }
     
+    /**
+     * @param strs
+     * @return
+     */
     public List<List<String>> groupAnagrams(String[] strs) {
         
         // key is the sorted string. value is the strings.
@@ -29,15 +33,25 @@ class Solution1 {
             char[] chars = s.toCharArray();
             Arrays.sort(chars);
             String sorted = new String(chars);
-            // listchar is in alphabetical order.
-            if ( !map.containsKey(sorted)  ) {
-                List<String> listOfString = new LinkedList<>();
-                listOfString.add(s);
-                map.put(sorted,listOfString);
-            } else {
-                List<String> listOfString = map.get(sorted);
-                listOfString.add(s);                
-            }
+            // listchar is in sorted order.
+            // if ( !map.containsKey(sorted)  ) {
+            //     List<String> listOfString = new LinkedList<>();
+            //     listOfString.add(s);
+            //     map.put(sorted,listOfString);
+            // } else {
+            //     List<String> listOfString = map.get(sorted);
+            //     listOfString.add(s);                
+            // }
+
+
+            // List<String> listOfString = new LinkedList<>();
+            // listOfString = map.putIfAbsent(sorted, listOfString); // WRONG AS listOfString can be null.
+            // listOfString.add(s);
+
+            map.putIfAbsent(sorted, new LinkedList<String>());
+            map.get(sorted).add(s);
+            
+
         }
 
         List<List<String>> returnList = new LinkedList<>();

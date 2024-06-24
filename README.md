@@ -17,3 +17,5 @@ We are currently using Jdk 21 on wsl2
 
 1. Open VSCode on Windows
 2. Click the bottom left corner and choose "Connect to WSL"
+
+![Screenshot (8)](https://github.com/sunnyau/java-stream/assets/37674904/8c5cf79f-4a9c-4f40-8970-e4f851e91a9b)

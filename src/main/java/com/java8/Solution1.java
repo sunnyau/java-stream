@@ -2,6 +2,8 @@ package com.java8;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.*;
 
 // JP Morgan inteview question
@@ -54,17 +56,20 @@ class Solution1 {
 
         }
 
-        List<List<String>> returnList = new LinkedList<>();
+        // List<List<String>> returnList = new LinkedList<>();
 
-        for ( List<String> values : map.values() ) {
-            // String key = kv.getKey();
-            // List<String> values = kv.get(key);
-            returnList.add(values);
-            // System.out.println(key);
-            // System.out.println(values);
-        }
+        // for ( List<String> values : map.values() ) {
+        //     // String key = kv.getKey();
+        //     // List<String> values = kv.get(key);
+        //     returnList.add(values);
+        //     // System.out.println(key);
+        //     // System.out.println(values);
+        // }
+        // return returnList;
 
-        return returnList;
+        return map.values().stream().collect(Collectors.toList());
+
+        
     }
 
 }

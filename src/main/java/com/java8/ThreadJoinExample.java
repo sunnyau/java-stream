@@ -1,4 +1,4 @@
-package exercise;
+package com.java8;
 
 class MyThread implements Runnable {
   String name; // name of thread

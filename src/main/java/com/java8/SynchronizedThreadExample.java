@@ -1,4 +1,4 @@
-package exercise;
+package com.java8;
 
 import java.util.concurrent.*;
 

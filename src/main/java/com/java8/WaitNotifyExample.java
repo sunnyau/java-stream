@@ -1,4 +1,4 @@
-package exercise;
+package com.java8;
 
 //A correct implementation of a producer and consumer.
 class Q {

@@ -1,7 +1,7 @@
 
 package com.stream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,11 +11,8 @@ import java.util.Map.Entry;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.stream.Gender;
-import com.stream.Name;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Java 8 stream tutorial.
@@ -31,7 +28,7 @@ public class ComplicatedStreamTest {
     private Name name4 = new Name("Paul", "Gascoigne", Gender.M);
     private Name name5 = new Name("Linda", "Mccartney", Gender.F);
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         map = new HashMap<>();
         map.put("Group A", Arrays.asList(name1, name2));

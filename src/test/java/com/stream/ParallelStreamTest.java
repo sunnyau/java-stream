@@ -1,7 +1,7 @@
 
 package com.stream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Java 8 stream tutorial.
  * 
- * parallelStream() uses fork join underneath. It may not always quicker.
+ * parallelStream() uses fork join underneath. It may not be always quicker.
  * 
  * @author aus
  */
@@ -23,7 +23,7 @@ public class ParallelStreamTest {
     private final long MAX = 1000000L;
     private List<Long> arrayList, linkedList;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         linkedList = new LinkedList<>();
         arrayList = new ArrayList<>();

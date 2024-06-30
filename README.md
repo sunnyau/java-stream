@@ -6,7 +6,8 @@ Run 'mvn verify -Pcomponent-tests' only run tests in src/it/java
 
 We are currently using Jdk 21 on wsl2
 
-
+# Tidy up code
+Alt-Shift-F
 
 # How to start VSCode with wsl2
 

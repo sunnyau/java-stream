@@ -12,10 +12,10 @@ public class SimpleThreads {
     private static class MessageLoop implements Runnable {
         public void run() {
             String importantInfo[] = {
-                "Mares eat oats",
-                "Does eat oats",
-                "Little lambs eat ivy",
-                "A kid will eat ivy too"
+                    "Mares eat oats",
+                    "Does eat oats",
+                    "Little lambs eat ivy",
+                    "A kid will eat ivy too"
             };
             try {
                 for (int i = 0; i < importantInfo.length; i++) {
@@ -31,7 +31,7 @@ public class SimpleThreads {
     public static void main(String args[]) throws InterruptedException {
 
         threadMessage("Starting MessageLoop thread");
-        
+
         Thread t = new Thread(new MessageLoop());
         t.start();
 

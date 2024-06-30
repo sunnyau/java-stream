@@ -1,9 +1,9 @@
 package com.java8;
 
-public class ConstructorCallsOverridable  {
+public class ConstructorCallsOverridable {
 
-	public static void main( String[] args ) {
-		ParentClass child = new ChildClass() ;
+	public static void main(String[] args) {
+		ParentClass child = new ChildClass();
 	}
 }
 
@@ -12,6 +12,7 @@ class ParentClass {
 		System.out.println("ParentClass");
 		methodA();
 	}
+
 	protected void methodA() {
 		System.out.println("ParentClass methodA ");
 	}
@@ -25,14 +26,9 @@ class ChildClass extends ParentClass {
 		System.out.println("ChildClass");
 		childClassString = new String("childClassString");
 		methodA();
-	}	
+	}
+
 	protected void methodA() {
 		System.out.println("ChildClass methodA " + childClassString);
 	}
 }
-
-	
-
-
-
-

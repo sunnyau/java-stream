@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class OverloadingWithGeneric {
 
-	//public void methodA( List<String> list ) {}
-	
-	//public void methodA( List<Integer> list ) {}
-	
-	public static void main( String[] args ) {
+	// public void methodA( List<String> list ) {}
+
+	// public void methodA( List<Integer> list ) {}
+
+	public static void main(String[] args) {
 	}
 }

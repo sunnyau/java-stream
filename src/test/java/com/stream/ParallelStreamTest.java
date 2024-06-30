@@ -1,5 +1,5 @@
 
-package com.java8;
+package com.stream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,26 +19,22 @@ import org.junit.Test;
  * 
  * @author aus
  */
-public class ParallelStreamTest
-{
+public class ParallelStreamTest {
     private final long MAX = 1000000L;
     private List<Long> arrayList, linkedList;
 
     @Before
-    public void setUp() throws Exception
-    {
+    public void setUp() throws Exception {
         linkedList = new LinkedList<>();
         arrayList = new ArrayList<>();
-        for (long i = 0; i < MAX; i++)
-        {
+        for (long i = 0; i < MAX; i++) {
             linkedList.add(Long.valueOf(i));
             arrayList.add(Long.valueOf(i));
         }
     }
 
     @Test
-    public void parallelIsFasterForArrayList()
-    {
+    public void parallelIsFasterForArrayList() {
         System.out.println("ArrayList : parallel is faster in case 1");
         compareCase1(arrayList);
         System.out.println("");
@@ -47,8 +43,7 @@ public class ParallelStreamTest
     }
 
     @Test
-    public void parallelMayNotAlwaysFaster()
-    {
+    public void parallelMayNotAlwaysFaster() {
         System.out.println("LinkedList : parallel is faster in case 1");
         compareCase1(linkedList);
         System.out.println("");
@@ -56,18 +51,15 @@ public class ParallelStreamTest
         compareCase2(linkedList);
     }
 
-    private void compareCase1(List<Long> list)
-    {
+    private void compareCase1(List<Long> list) {
         long time1 = System.currentTimeMillis();
         long result = 0;
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             result += list.stream().mapToLong(l -> l).sum();
         }
         long time2 = System.currentTimeMillis();
         long parallelResult = 0;
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             parallelResult += list.parallelStream().mapToLong(l -> l).sum();
         }
         long time3 = System.currentTimeMillis();
@@ -78,24 +70,19 @@ public class ParallelStreamTest
         assertEquals(result, parallelResult);
     }
 
-    private void compareCase2(List<Long> list)
-    {
+    private void compareCase2(List<Long> list) {
         long time1 = System.currentTimeMillis();
 
         Map<Boolean, List<Long>> result = null;
-        for (int i = 0; i < 10; i++)
-        {
-            result =
-                    list.stream().collect(Collectors.groupingBy(s -> (s % 2 == 0)));
+        for (int i = 0; i < 10; i++) {
+            result = list.stream().collect(Collectors.groupingBy(s -> (s % 2 == 0)));
         }
 
         long time2 = System.currentTimeMillis();
 
         Map<Boolean, List<Long>> parallelResult = null;
-        for (int i = 0; i < 10; i++)
-        {
-            parallelResult =
-                    list.parallelStream().collect(Collectors.groupingBy(s -> (s % 2 == 0)));
+        for (int i = 0; i < 10; i++) {
+            parallelResult = list.parallelStream().collect(Collectors.groupingBy(s -> (s % 2 == 0)));
         }
 
         long time3 = System.currentTimeMillis();

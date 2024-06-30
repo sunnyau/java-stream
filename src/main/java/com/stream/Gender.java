@@ -1,5 +1,5 @@
 
-package com.java8;
+package com.stream;
 
 public enum Gender
 {

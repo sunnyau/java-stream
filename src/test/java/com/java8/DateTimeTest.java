@@ -34,19 +34,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DateTimeTest
-{
+public class DateTimeTest {
     private ZoneId london;
 
     @Before
-    public void setup()
-    {
+    public void setup() {
         this.london = ZoneId.of("Europe/London");
     }
 
     @Test
-    public void classes()
-    {
+    public void classes() {
         /**
          * <pre>
          *         Classes
@@ -81,8 +78,7 @@ public class DateTimeTest
     }
 
     @Test
-    public void basics()
-    {
+    public void basics() {
         System.out.println("================================================");
 
         {
@@ -142,8 +138,7 @@ public class DateTimeTest
     }
 
     @Test
-    public void dateArithmetic()
-    {
+    public void dateArithmetic() {
         {
             /*
              * Get tomorrow's date LocalDate tomorrow =
@@ -153,8 +148,7 @@ public class DateTimeTest
             /*
              * Go back 5 and a half hours.
              */
-            LocalDateTime dateTime =
-                    LocalDateTime.now().minusHours(5).minusMinutes(30);
+            LocalDateTime dateTime = LocalDateTime.now().minusHours(5).minusMinutes(30);
         }
 
         /*
@@ -166,22 +160,19 @@ public class DateTimeTest
             /*
              * First day of february 2014 (2014-02-01)
              */
-            LocalDate firstDayOfMonth =
-                    date.with(TemporalAdjusters.firstDayOfMonth());
+            LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth());
             assertEquals(1, firstDayOfMonth.getDayOfMonth());
 
             /*
              * Last day of february 2014 (2014-02-28)
              */
-            LocalDate lastDayOfMonth =
-                    date.with(TemporalAdjusters.lastDayOfMonth());
+            LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth());
             assertEquals(28, lastDayOfMonth.getDayOfMonth());
         }
     }
 
     @Test
-    public void periods()
-    {
+    public void periods() {
         /*
          * Get teh period between two dates
          */
@@ -206,8 +197,7 @@ public class DateTimeTest
     }
 
     @Test
-    public void durations()
-    {
+    public void durations() {
         Instant firstInstant = Instant.ofEpochSecond(1294881180); // 2011-01-13
                                                                   // 01:13
         Instant secondInstant = Instant.ofEpochSecond(1294708260); // 2011-01-11
@@ -231,13 +221,11 @@ public class DateTimeTest
     }
 
     @Test
-    public void zone_id()
-    {
+    public void zone_id() {
         System.out.println("================================================");
 
         // Get the current date and time
-        ZonedDateTime date1 =
-                ZonedDateTime.parse("2007-12-03T10:15:30+05:30[Asia/Karachi]");
+        ZonedDateTime date1 = ZonedDateTime.parse("2007-12-03T10:15:30+05:30[Asia/Karachi]");
         System.out.println("date1: " + date1);
 
         ZoneId id = ZoneId.of("Europe/Paris");
@@ -251,20 +239,18 @@ public class DateTimeTest
     }
 
     @Test
-    public void clock_change_forward()
-    {
+    public void clock_change_forward() {
         System.out.println("================================================");
 
         // Get the current date and time
-        ZonedDateTime date1 =
-                ZonedDateTime.of(2016,
-                                 Month.MARCH.getValue(),
-                                 26,
-                                 1,
-                                 0,
-                                 0,
-                                 0,
-                                 this.london);
+        ZonedDateTime date1 = ZonedDateTime.of(2016,
+                Month.MARCH.getValue(),
+                26,
+                1,
+                0,
+                0,
+                0,
+                this.london);
 
         System.out.println(date1);
 
@@ -284,8 +270,7 @@ public class DateTimeTest
     }
 
     @Test
-    public void clock_change_back()
-    {
+    public void clock_change_back() {
         System.out.println("================================================");
 
         /*
@@ -297,27 +282,25 @@ public class DateTimeTest
          * ZonedDateTime#withLaterOffsetAtOverlap method
          */
 
-        ZonedDateTime date1 =
-                ZonedDateTime.of(2016,
-                                 Month.OCTOBER.getValue(),
-                                 30,
-                                 1,
-                                 30,
-                                 0,
-                                 0,
-                                 this.london);
+        ZonedDateTime date1 = ZonedDateTime.of(2016,
+                Month.OCTOBER.getValue(),
+                30,
+                1,
+                30,
+                0,
+                0,
+                this.london);
 
         System.out.println(date1);
 
-        ZonedDateTime date2 =
-                ZonedDateTime.of(2016,
-                                 Month.OCTOBER.getValue(),
-                                 30,
-                                 1,
-                                 30,
-                                 0,
-                                 0,
-                                 this.london).withLaterOffsetAtOverlap();
+        ZonedDateTime date2 = ZonedDateTime.of(2016,
+                Month.OCTOBER.getValue(),
+                30,
+                1,
+                30,
+                0,
+                0,
+                this.london).withLaterOffsetAtOverlap();
 
         System.out.println(date2);
 
@@ -330,18 +313,13 @@ public class DateTimeTest
     }
 
     @Test
-    public void comtel_dates()
-    {
+    public void comtel_dates() {
         System.out.println("================================================");
 
-        try
-        {
-            final LocalDateTime ldt =
-                    LocalDateTime.parse("2016-01-15T25:00:00");
+        try {
+            final LocalDateTime ldt = LocalDateTime.parse("2016-01-15T25:00:00");
             System.out.println(ldt);
-        }
-        catch (DateTimeException e)
-        {
+        } catch (DateTimeException e) {
             /*
              * We cannot parse times over 23, so we cannot directly parse comtel
              * dates.
@@ -361,11 +339,9 @@ public class DateTimeTest
         /*
          * Set the leniency using this technique, and we can parse
          */
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ISO_DATE_TIME.withResolverStyle(ResolverStyle.LENIENT);
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME.withResolverStyle(ResolverStyle.LENIENT);
 
-        final LocalDateTime ldt =
-                LocalDateTime.parse("2016-01-15T25:00:00", formatter);
+        final LocalDateTime ldt = LocalDateTime.parse("2016-01-15T25:00:00", formatter);
         System.out.println(ldt);
 
         assertEquals(2016, ldt.getYear());
@@ -377,8 +353,7 @@ public class DateTimeTest
     }
 
     @Test
-    public void backward_compatability()
-    {
+    public void backward_compatability() {
         System.out.println("================================================");
 
         /*
@@ -413,17 +388,16 @@ public class DateTimeTest
         /*
          * Create a zoned date time from a calender.
          */
-        ZonedDateTime zonedDateTimeFromGregorianCalendar =
-                new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles")).toZonedDateTime();
+        ZonedDateTime zonedDateTimeFromGregorianCalendar = new GregorianCalendar(
+                TimeZone.getTimeZone("America/Los_Angeles")).toZonedDateTime();
 
         assertEquals(ZoneId.of("America/Los_Angeles"),
-                     zonedDateTimeFromGregorianCalendar.getZone());
+                zonedDateTimeFromGregorianCalendar.getZone());
     }
 
     @Test
     public void backward_compatability_xml()
-            throws DatatypeConfigurationException
-    {
+            throws DatatypeConfigurationException {
         System.out.println("================================================");
 
         /*
@@ -435,25 +409,21 @@ public class DateTimeTest
          * Get the current date
          */
         DatatypeFactory dtFactory = DatatypeFactory.newInstance();
-        XMLGregorianCalendar xmlCal =
-                dtFactory.newXMLGregorianCalendar("2016-03-21T12:30:45");
+        XMLGregorianCalendar xmlCal = dtFactory.newXMLGregorianCalendar("2016-03-21T12:30:45");
 
         System.out.println("XMLGregorianCalendar: " + xmlCal);
 
-        LocalDateTime localDateTime =
-                LocalDateTime.ofInstant(xmlCal.toGregorianCalendar().getTime().toInstant(),
-                                        this.london);
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(xmlCal.toGregorianCalendar().getTime().toInstant(),
+                this.london);
 
         System.out.println("XML Duration: " + localDateTime);
 
-        final javax.xml.datatype.Duration xmlDuration =
-                dtFactory.newDuration("P5Y2M10D");
+        final javax.xml.datatype.Duration xmlDuration = dtFactory.newDuration("P5Y2M10D");
 
         System.out.println(xmlDuration);// .getTimeInMillis(new Date(0)));
         System.out.println(xmlDuration.getTimeInMillis(new Date(0)));
 
-        final java.time.Duration converted =
-                java.time.Duration.ofMillis(xmlDuration.getTimeInMillis(new Date(0)));
+        final java.time.Duration converted = java.time.Duration.ofMillis(xmlDuration.getTimeInMillis(new Date(0)));
 
         /*
          * It only displays time not the years and days. This should be used

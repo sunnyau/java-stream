@@ -1,5 +1,5 @@
 
-package com.java8;
+package com.stream;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package com.java8;
+package com.stream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -32,16 +32,16 @@ public class MinMaxSumAverageTest {
      */
     @Test
     public void minMaxSumAverage() {
-        assertEquals(2,  numList.stream().mapToInt(Integer::valueOf).min().orElse(0));
-        assertEquals(6,  numList.stream().mapToInt(Integer::valueOf).max().orElse(0));
+        assertEquals(2, numList.stream().mapToInt(Integer::valueOf).min().orElse(0));
+        assertEquals(6, numList.stream().mapToInt(Integer::valueOf).max().orElse(0));
         assertEquals(20, numList.stream().mapToInt(Integer::valueOf).sum());
-        assertEquals(4.0,  numList.stream().mapToInt(Integer::valueOf).average().orElse(0.0), 0.01);
+        assertEquals(4.0, numList.stream().mapToInt(Integer::valueOf).average().orElse(0.0), 0.01);
     }
 
     @Test
     public void IntStreamTest() {
-        assertEquals( 10, IntStream.rangeClosed(1, 10).count());
-        assertEquals( 9, IntStream.range(1, 10).count());
+        assertEquals(10, IntStream.rangeClosed(1, 10).count());
+        assertEquals(9, IntStream.range(1, 10).count());
     }
 
 }

@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.java8'
+version = '1.0-SNAPSHOT'
+description = 'java-stream'
+sourceCompatibility = 21
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation libs.org.junit.jupiter.junit.jupiter
+}
+
+test {
+	useJUnitPlatform()
+}
+

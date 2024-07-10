@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.record.SimpleRecordTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-10T22:17:09" hostname="TDesktop" time="0.014">
+  <properties/>
+  <testcase name="simpleRecordTest()" classname="com.record.SimpleRecordTest" time="0.014"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

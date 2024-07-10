@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.stream.ParallelStreamTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-07-10T22:17:09" hostname="TDesktop" time="3.459">
+  <properties/>
+  <testcase name="parallelIsFasterForArrayList()" classname="com.stream.ParallelStreamTest" time="0.816"/>
+  <testcase name="parallelMayNotAlwaysFaster()" classname="com.stream.ParallelStreamTest" time="2.642"/>
+  <system-out><![CDATA[ArrayList : parallel is faster in case 1
+stream   time taken : 70
+parallel time taken : 35
+
+ArrayList : parallel is faster in case 2
+stream   time taken : 391
+parallel time taken : 171
+LinkedList : parallel is faster in case 1
+stream   time taken : 65
+parallel time taken : 171
+
+LinkedList : parallel is slower in case 2
+stream   time taken : 258
+parallel time taken : 2080
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
